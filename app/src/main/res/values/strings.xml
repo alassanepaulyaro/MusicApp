@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyMusicApp</string>
+    <string name="playlist_screen">Playlists</string>
 </resources>
