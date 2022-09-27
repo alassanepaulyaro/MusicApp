@@ -1,4 +1,6 @@
-package com.paulyaro.mymusicapp
+package com.paulyaro.mymusicapp.playlist
+
+import com.paulyaro.mymusicapp.R
 
 data class Playlist(
     val id : String,

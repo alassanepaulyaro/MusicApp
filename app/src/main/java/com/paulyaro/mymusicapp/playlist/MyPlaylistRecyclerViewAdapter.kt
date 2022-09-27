@@ -1,4 +1,4 @@
-package com.paulyaro.mymusicapp
+package com.paulyaro.mymusicapp.playlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

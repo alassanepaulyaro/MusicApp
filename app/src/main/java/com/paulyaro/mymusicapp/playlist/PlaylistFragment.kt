@@ -1,4 +1,4 @@
-package com.paulyaro.mymusicapp
+package com.paulyaro.mymusicapp.playlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,11 +9,14 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.paulyaro.mymusicapp.R
 
 class PlaylistFragment : Fragment() {
 
     private lateinit var viewModel : PlaylistViewModel
     private lateinit var viewModelFactory : PlaylistViewModelFactory
+    private val service = PlaylistService()
+    private val repository = PlaylistRepository(service)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +49,7 @@ class PlaylistFragment : Fragment() {
     }
 
     private fun setUpViewModel() {
-        viewModelFactory = PlaylistViewModelFactory()
+        viewModelFactory = PlaylistViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(PlaylistViewModel::class.java)
     }
 
