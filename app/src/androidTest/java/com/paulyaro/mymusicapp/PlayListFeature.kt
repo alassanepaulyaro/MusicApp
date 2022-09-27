@@ -52,8 +52,8 @@ class PlayListFeature {
         onView(allOf(withId(R.id.playlist_image), isDescendantOfA(nthChildOf(withId(R.id.playlists_list), 0))))
             .check(ViewAssertions.matches(withDrawable(R.mipmap.playlist)))
             .check(ViewAssertions.matches(isDisplayed()))
-
     }
+
 
     fun nthChildOf(parentMatcher: Matcher<View>, childPosition: Int): Matcher<View> {
         return object : TypeSafeMatcher<View>() {
