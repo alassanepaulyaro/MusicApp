@@ -20,7 +20,7 @@ class PlaylistFragment : Fragment() {
     private lateinit var viewModelFactory : PlaylistViewModelFactory
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://localhost:3000/")  // check your localhost ip address or  http://127.0.0.1:3000/
+        .baseUrl( "http://192.168.0.20:3000/")  // check your localhost ip address or  http://127.0.0.1:3000/
         .client(OkHttpClient())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
