@@ -1,8 +1,10 @@
 package com.paulyaro.mymusicapp.playlist
 
+import retrofit2.http.GET
+
 interface PlaylistAPI {
-    suspend fun fetchAllPlaylists() :List<Playlist> {
-        TODO("Not yet implemented")
-    }
+
+    @GET("playlists")
+    suspend fun fetchAllPlaylists() :List<Playlist>
 
 }
