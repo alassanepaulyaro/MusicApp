@@ -10,26 +10,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.paulyaro.mymusicapp.R
+import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PlaylistFragment : Fragment() {
 
     private lateinit var viewModel : PlaylistViewModel
-    private lateinit var viewModelFactory : PlaylistViewModelFactory
-
-    private val retrofit = Retrofit.Builder()
-        .baseUrl( "http://192.168.0.20:3000/")  // check your localhost ip address or  http://127.0.0.1:3000/
-        .client(OkHttpClient())
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
-    private val api = retrofit.create(PlaylistAPI::class.java)
-
-    private val service = PlaylistService(api)
-
-    private val repository = PlaylistRepository(service)
+    @Inject
+    lateinit var viewModelFactory : PlaylistViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,7 +52,6 @@ class PlaylistFragment : Fragment() {
     }
 
     private fun setUpViewModel() {
-        viewModelFactory = PlaylistViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(PlaylistViewModel::class.java)
     }
 
